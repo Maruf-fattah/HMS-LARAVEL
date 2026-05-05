@@ -16,9 +16,17 @@
 		<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 </head>
-<?php
+	<?php
+// absolutely nothing before this line
+
+ob_start(); // optional safety net (keeps PHP from crying about headers)
 session_start();
-include('includes/connection.php');
+
+require_once __DIR__ . '/includes/connection.php';
+
+// now your actual code starts
+echo "App is running...";
+
 if(isset($_REQUEST['login']))
 {
     $username = mysqli_real_escape_string($connection,$_REQUEST['username']);
