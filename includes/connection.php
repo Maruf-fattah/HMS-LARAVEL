@@ -1,6 +1,6 @@
 <?php
 
-$host = "mysql"; // <-- put your container/service name here
+$server = "mysql"; // <-- put your container/service name here
 $user = "root";
 $password = ""; // change if needed
 $database = "hms_db";
