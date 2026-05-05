@@ -1,11 +1,12 @@
 <?php
-ob_start(); // safety buffer
+ob_start();
+session_start();
 
 require_once __DIR__ . '/includes/connection.php';
+?>
 
-// your code below
-echo "App running";?>
 <!DOCTYPE html>
+<html>
 <html lang="en">
 
 
