@@ -7,7 +7,7 @@
 //$select_db = mysqli_select_db($connection, $database);
 //if(!$select_db)
 //{	echo("connection terminated");
-}
+//}
 //<?php
 
 $host = "mysql"; // or "mysql" if Docker
