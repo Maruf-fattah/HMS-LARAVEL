@@ -1,10 +1,22 @@
 <?php
-$server ="mysql";
-$username = "root";
+//$server ="mysql";
+//$username = "root";
+//$password = "";
+//$database = "hms_db";
+//$connection = mysqli_connect("$server","$username","$password");
+//$select_db = mysqli_select_db($connection, $database);
+//if(!$select_db)
+//{	echo("connection terminated");
+}
+//<?php
+
+$host = "mysql"; // or "mysql" if Docker
+$user = "root";
 $password = "";
 $database = "hms_db";
-$connection = mysqli_connect("$server","$username","$password");
-$select_db = mysqli_select_db($connection, $database);
-if(!$select_db)
-{	echo("connection terminated");
+
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
