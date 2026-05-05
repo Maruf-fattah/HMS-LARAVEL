@@ -17,13 +17,9 @@
 	<![endif]-->
 </head>
 	<?php
-// absolutely nothing before this line
-
 ob_start(); // optional safety net (keeps PHP from crying about headers)
 session_start();
-
 require_once __DIR__ . '/includes/connection.php';
-
 // now your actual code starts
 echo "App is running...";
 
