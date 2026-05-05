@@ -4,7 +4,8 @@ ob_start(); // safety buffer
 require_once __DIR__ . '/includes/connection.php';
 
 // your code below
-echo "App running";<!DOCTYPE html>
+echo "App running";
+<!DOCTYPE html>
 <html lang="en">
 
 
