@@ -1,5 +1,5 @@
 <?php
-$server = ""mysql";
+$server = ""mysqli";
 $username = "root";
 $password = "";
 $database = "hms_db";
