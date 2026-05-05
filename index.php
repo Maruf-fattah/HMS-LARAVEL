@@ -4,7 +4,7 @@ ob_start(); // safety buffer
 require_once __DIR__ . '/includes/connection.php';
 
 // your code below
-echo "App running";
+echo "App running";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,7 @@ echo "App running";
 		<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 </head>
-	
+	<?php
 if(isset($_REQUEST['login']))
 {
     $username = mysqli_real_escape_string($connection,$_REQUEST['username']);
