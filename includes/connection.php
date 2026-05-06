@@ -5,7 +5,7 @@ $user = 'root';
 $pass = '@Mmi202601927019010'; // Ensure this matches your Dokploy DB settings
 $dbname = 'hms_db';
 
-$con = mysqli_connect($host, $user, $pass, $dbname);
+$con = mysqli_connect($host, $user, $pass, $hms_db);
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
