@@ -4,7 +4,7 @@ $user = "root";
 $password = "";
 $database = "hms_db";
 
-$conn = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect("mysql", "root", "password", "hms_db");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
