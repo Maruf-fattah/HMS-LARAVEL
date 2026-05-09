@@ -1,0 +1,21 @@
+services:
+  # This is your PHP Application
+  app:
+    image: php:8.2-apache
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+  # This is your Database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hms_db
+    ports:
+      - "3306:3306"
