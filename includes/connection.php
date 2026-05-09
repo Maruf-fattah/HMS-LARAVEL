@@ -1,9 +1,9 @@
 <?php
 $server = "Mysql";
 $username = "root";
-$password = "";
+$password = "@Mmi202601927019010";
 $database = "hms_db";
-$connection = mysqli_connect("$server","$username","$password");
+$conn = mysqli_connect("Mysql", "root", "@Mmi202601927019010");
 $select_db = mysqli_select_db($connection, $database);
 if(!$select_db)
 {
