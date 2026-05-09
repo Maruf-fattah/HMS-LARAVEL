@@ -1,13 +1,12 @@
 <?php
-$server = "mysql";
-$username = "root";
-$password = "@Mmi202601927019010";
-$database = "hms_db";
-$conn = mysqli_connect("mysql", "root", "@Mmi202601927019010", "hms_db");
-//                                                   ^ Added comma here
-$select_db = mysqli_select_db($connection, $database);
-if(!$select_db)
-{
-	echo("connection terminated");
+$host = "mysql";      // This must match your docker-compose service name
+$user = "root";       // Your DB username
+$pass = "root";       // Your DB password (from docker-compose)
+$db   = "hms_db";     // Your DB name
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
