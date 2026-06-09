@@ -21,7 +21,57 @@ require_once __DIR__ . '/includes/connection.php';
 		<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 </head>
-<?php
+
+//if (isset($_REQUEST['login'])) {
+   // $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
+    //$pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
+    
+    //$fetch_query = mysqli_query($connection, "SELECT * FROM tbl_employee WHERE username = '$username' AND password = '$pwd'");
+    
+    //if ($fetch_query) {
+        //$res = mysqli_num_rows($fetch_query);
+        
+       // if ($res > 0) {
+          //  $data = mysqli_fetch_array($fetch_query);
+           // $name = $data['first_name'] . ' ' . $data['last_name'];
+          //  $role = $data['role'];
+           // $_SESSION['name'] = $name;
+            //$_SESSION['role'] = $role;
+            
+     //       header('Location: dashboard.php');
+           // exit();
+   //     } else {
+   //         $msg = "Incorrect login details.";
+      //  }
+ //   } else {
+  //      $msg = "Database query failed: " . mysqli_error($connection);
+  //  }
+//}
+//$host     = 'database-mysql-uioydi';    // Internal Host
+//$user     = 'maruful.ac.npg@gmail.com';  // User
+//$password = '@Mmi202601927019010';       // Password
+//$hms_db   = 'hms-db';                   // Database Name
+//$port     = 3306; 
+	<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// 1. HARDCODE YOUR CONNECTION INFO HERE TO BYPASS THE MISSING FILE ISSUE
+$db_host     = "database-mysql-uioydi"; 
+$db_user     = "maruful.ac.npg@gmail.com";       // Change to your actual database username
+$db_password = "@Mmi202601927019010";           // Change to your actual database password
+$db_name     = "hms_db";     // Change to your actual database name
+
+// 2. Establish the connection directly in this file
+$connection = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+
+// 3. Check if the connection worked. If it fails, it will tell you exactly why.
+if (!$connection) {
+    die("Database Connection Failed: " . mysqli_connect_error());
+}
+
+// 4. Run your login script
 if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
@@ -48,7 +98,7 @@ if (isset($_REQUEST['login'])) {
     }
 }
 ?>
-<body>
+	<body>
     <div class="main-wrapper account-wrapper">
         <div class="account-page">
 			<div class="account-center">
