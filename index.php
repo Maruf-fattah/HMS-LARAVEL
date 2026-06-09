@@ -22,27 +22,34 @@ require_once __DIR__ . '/includes/connection.php';
 	<![endif]-->
 </head>
 <?php
-if(isset($_REQUEST['login']))
-{
-    $username = mysqli_real_escape_string($connection,$_REQUEST['username']);
-    $pwd = mysqli_real_escape_string($connection,$_REQUEST['pwd']);
+include_once('hms_db.php'); 
+
+if (isset($_REQUEST['login'])) {
+    $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
+    $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
     
-    $fetch_query = mysqli_query($connection, "select * from tbl_employee where username ='$username' and password = '$pwd'");
-    $res = mysqli_num_rows($fetch_query);
-    if($res>0)
-    {
-        $data = mysqli_fetch_array($fetch_query);
-        $name = $data['first_name'].' '.$data['last_name'];
-        $role = $data['role'];
-        $_SESSION['name'] = $name;
-        $_SESSION['role'] = $role;
-        header('location:dashboard.php');
+    $fetch_query = mysqli_query($connection, "SELECT * FROM tbl_employee WHERE username = '$username' AND password = '$pwd'");
+    
+    if ($fetch_query) {
+        $res = mysqli_num_rows($fetch_query);
+        
+        if ($res > 0) {
+            $data = mysqli_fetch_array($fetch_query);
+            $name = $data['first_name'] . ' ' . $data['last_name'];
+            $role = $data['role'];
+            $_SESSION['name'] = $name;
+            $_SESSION['role'] = $role;
+            
+            header('Location: dashboard.php');
+            exit();
+        } else {
+            $msg = "Incorrect login details.";
+        }
+    } else {
+        $msg = "Database query failed: " . mysqli_error($connection);
     }
-	{ 
-		else
-		}
-        $msg = "Incorrect login details."; 
-		?>
+}
+?>
 <body>
     <div class="main-wrapper account-wrapper">
         <div class="account-page">
