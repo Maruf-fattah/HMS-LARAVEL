@@ -22,8 +22,6 @@ require_once __DIR__ . '/includes/connection.php';
 	<![endif]-->
 </head>
 <?php
-include_once('hms_db.php'); 
-
 if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
