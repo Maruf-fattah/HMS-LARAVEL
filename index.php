@@ -44,6 +44,7 @@ if(isset($_REQUEST['login']))
     else
     {
         $msg = "Incorrect login details."; 
+		?>
 <body>
     <div class="main-wrapper account-wrapper">
         <div class="account-page">
