@@ -1,2 +1,2 @@
-# hospitaldjan
+# hospitallaravel
 for hospital
