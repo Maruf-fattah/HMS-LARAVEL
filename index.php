@@ -92,7 +92,6 @@ if (isset($_REQUEST['login'])) {
     } else {
         $msg = "Database query failed: " . mysqli_error($connection);
     }
-}
 ?>
 	<body>
     <div class="main-wrapper account-wrapper">
