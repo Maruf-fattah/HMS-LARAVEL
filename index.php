@@ -39,7 +39,7 @@ if(isset($_REQUEST['login']))
         header('location:dashboard.php');
     }
     else
-    {
+		}
         $msg = "Incorrect login details."; 
 		?>
 <body>
