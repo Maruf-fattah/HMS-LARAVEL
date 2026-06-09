@@ -53,30 +53,30 @@ require_once __DIR__ . '/includes/connection.php';
 //$hms_db   = 'hms-db';                   // Database Name
 //$port     = 3306; 
 	<?php
-// 1. Start the session safely
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 2. Active Database Configuration (NO '//' SLASHES)
+// 1. ACTIVE CONFIGURATION VARIABLES (NO '//' BEFORE THEM)
 $host     = 'database-mysql-uioydi';    // Internal Host
 $user     = 'maruful.ac.npg@gmail.com';  // Database Username
 $password = '@Mmi202601927019010';       // Database Password
-$hms_db   = 'hms_db';                   // Correct Database Name (with dash)
-$port     = 3306;                       // Port
+$hms_db   = 'hms-db';                   // Correct Database Name (with dash)
+$port     = 3306;                       // Connection Port
 
-// 3. Establish connection using your explicit variables
+// 2. CONNECT TO DATABASE (Replacing the broken hardcoded line 69)
 $connection = mysqli_connect($host, $user, $password, $hms_db, $port);
 
-// 4. Verify connection works
+// 3. Connection Verification
 if (!$connection) {
     die("Database Connection Failed: " . mysqli_connect_error());
 }
 
-// 5. Handle Login Logic
+// 4. ACTIVE LOGIN HANDLING
 if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
+    
     $fetch_query = mysqli_query($connection, "SELECT * FROM tbl_employee WHERE username = '$username' AND password = '$pwd'");
     
     if ($fetch_query) {
