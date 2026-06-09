@@ -57,21 +57,22 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 1. HARDCODE YOUR CONNECTION INFO HERE TO BYPASS THE MISSING FILE ISSUE
-$db_host     = "database-mysql-uioydi"; 
-$db_user     = "maruful.ac.npg@gmail.com";       // Change to your actual database username
-$db_password = "@Mmi202601927019010";           // Change to your actual database password
-$db_name     = "hms_db";     // Change to your actual database name
+// 1. Correct Database Configuration Settings
+$host     = 'database-mysql-uioydi';    // Your Internal Host
+$user     = 'maruful.ac.npg@gmail.com';  // Your Username
+$password = '@Mmi202601927019010';       // Your Password
+$hms_db   = 'hms-db';                   // Correct Database Name (with dash)
+$port     = 3306;                       // Port
 
-// 2. Establish the connection directly in this file
-$connection = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+// 2. Establish the connection using the variables above
+$connection = mysqli_connect($host, $user, $password, $hms_db, $port);
 
-// 3. Check if the connection worked. If it fails, it will tell you exactly why.
+// 3. Verify connection works
 if (!$connection) {
     die("Database Connection Failed: " . mysqli_connect_error());
 }
 
-// 4. Run your login script
+// 4. Handle Login Request
 if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
