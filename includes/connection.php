@@ -1,15 +1,15 @@
 <?php
-// Use the EXACT internal service name shown in your Dokploy database logs
-$host     = 'database-mysql-uioydi'; 
-$user     = 'maruful.ac.npg@gmail.com';
-$password = '@Mmi202601927019010';
-$hms_db   = 'hms-db';
-$port     = 3306;
+// 1. Precise credentials extracted directly from your Dokploy panel
+$host     = 'database-mysql-uioydi';    // Internal Host
+$user     = 'maruful.ac.npg@gmail.com';  // User
+$password = '@Mmi202601927019010';       // Password
+$hms_db   = 'hms-db';                   // Database Name
+$port     = 3306;                       // Internal Port
 
-// Create connection
+// 2. Establish connection
 $conn = mysqli_connect($host, $user, $password, $hms_db, $port);
 
-// Test if it works
+// 3. Connection Test
 if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
+    die("Database Connection failed: " . mysqli_connect_error());
 }
