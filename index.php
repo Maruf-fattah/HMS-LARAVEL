@@ -25,47 +25,25 @@ require_once __DIR__ . '/includes/connection.php';
 	<![endif]-->
 </head>
 <?php
-// 1. You must include your database connection file here!
-// Replace 'db_connect.php' with the actual name of your connection file.
-include('db_connect.php'); 
-
-// 2. Start the session since you are using $_SESSION variables
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 if(isset($_REQUEST['login']))
 {
-    // These will now work because $connection is defined in the included file
-    $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
-    $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
+    $username = mysqli_real_escape_string($connection,$_REQUEST['username']);
+    $pwd = mysqli_real_escape_string($connection,$_REQUEST['pwd']);
     
     $fetch_query = mysqli_query($connection, "select * from tbl_employee where username ='$username' and password = '$pwd'");
-    
-    if($fetch_query) 
+    $res = mysqli_num_rows($fetch_query);
+    if($res>0)
     {
-        $res = mysqli_num_rows($fetch_query);
-        if($res > 0)
-        {
-            $data = mysqli_fetch_array($fetch_query);
-            $name = $data['first_name'].' '.$data['last_name'];
-            $role = $data['role'];
-            $_SESSION['name'] = $name;
-            $_SESSION['role'] = $role;
-            header('location:dashboard.php');
-            exit(); // Always exit after a header redirect
-        }
-        else
-        {
-            $msg = "Incorrect login details.";
-        }
-    } 
-    else 
-    {
-        $msg = "Database query failed: " . mysqli_error($connection);
+        $data = mysqli_fetch_array($fetch_query);
+        $name = $data['first_name'].' '.$data['last_name'];
+        $role = $data['role'];
+        $_SESSION['name'] = $name;
+        $_SESSION['role'] = $role;
+        header('location:dashboard.php');
     }
-}
-?>
+    else
+    {
+        $msg = "Incorrect login details."; 
 <body>
     <div class="main-wrapper account-wrapper">
         <div class="account-page">
