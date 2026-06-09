@@ -49,7 +49,7 @@ if(isset($_REQUEST['login']))
 				<div class="account-box">
                     <form method="post" class="form-signin">
 						<div class="account-logo">
-                            <a href="index-2.html"><img src="assets/img/logo-dark.png" alt=""></a>
+                            <a href="index.html"><img src="assets/img/logo-dark.png" alt=""></a>
                                    </div>
                         <div class="form-group">
                             <label>Username</label>
