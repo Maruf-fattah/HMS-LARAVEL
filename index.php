@@ -53,26 +53,27 @@ require_once __DIR__ . '/includes/connection.php';
 //$hms_db   = 'hms-db';                   // Database Name
 //$port     = 3306; 
 	<?php
+// 1. Start the session safely
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 1. Correct Database Configuration Settings
-$host     = 'database-mysql-uioydi';    // Your Internal Host
-$user     = 'maruful.ac.npg@gmail.com';  // Your Username
-$password = '@Mmi202601927019010';       // Your Password
-$hms_db   = 'hms-db';                   // Correct Database Name (with dash)
+// 2. Active Database Configuration (NO '//' SLASHES)
+$host     = 'database-mysql-uioydi';    // Internal Host
+$user     = 'maruful.ac.npg@gmail.com';  // Database Username
+$password = '@Mmi202601927019010';       // Database Password
+$hms_db   = 'hms_db';                   // Correct Database Name (with dash)
 $port     = 3306;                       // Port
 
-// 2. Establish the connection using the variables above
+// 3. Establish connection using your explicit variables
 $connection = mysqli_connect($host, $user, $password, $hms_db, $port);
 
-// 3. Verify connection works
+// 4. Verify connection works
 if (!$connection) {
     die("Database Connection Failed: " . mysqli_connect_error());
 }
 
-// 4. Handle Login Request
+// 5. Handle Login Logic
 if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
