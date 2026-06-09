@@ -38,7 +38,8 @@ if(isset($_REQUEST['login']))
         $_SESSION['role'] = $role;
         header('location:dashboard.php');
     }
-    else
+	{ 
+		else
 		}
         $msg = "Incorrect login details."; 
 		?>
