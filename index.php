@@ -77,11 +77,6 @@ if (isset($_REQUEST['login'])) {
     $username = mysqli_real_escape_string($connection, $_REQUEST['username']);
     $pwd = mysqli_real_escape_string($connection, $_REQUEST['pwd']);
     
-    $fetch_query = mysqli_query($connection, "SELECT * FROM `tbl_employee` WHERE username = '$username' AND password = '$pwd'");
-    
-    if ($fetch_query) {
-        $res = mysqli_num_rows($fetch_query);
-        
         if ($res > 0) {
             $data = mysqli_fetch_array($fetch_query);
             $name = $data['first_name'] . ' ' . $data['last_name'];
